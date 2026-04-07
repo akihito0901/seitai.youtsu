@@ -60,11 +60,16 @@
                     },
                     animation: {
                         'float': 'float 3s ease-in-out infinite',
+                        'flash-text': 'flashText 2s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
                             '50%': { transform: 'translateY(-6px)' },
+                        },
+                        flashText: {
+                            '0%, 100%': { opacity: '0.9', color: '#ffffff', textShadow: '0 0 5px rgba(255,255,255,0.5)' },
+                            '50%': { opacity: '1', color: '#FFDF73', textShadow: '0 0 10px rgba(255,223,115,0.8)' },
                         }
                     }
                 }
@@ -201,46 +206,56 @@
                     <video src="./images/hero-yotsu.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
                 </div>
 
-                <div className="relative z-20 px-6 pt-20 pb-6 min-h-[600px] flex flex-col justify-between">
-                    {/* TOP: Target + Pain point — centered */}
-                    <div className="text-center pt-4">
-                        <span className="inline-block bg-skin-rose text-white text-[12px] font-bold px-4 py-1.5 rounded-full tracking-wider mb-2 shadow-lg">30代〜50代に多い「慢性的な腰痛」</span>
-                        <p className="text-[18px] font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] leading-snug">
-                            「長年続く<span className="text-skin-peach">腰痛に終止符を</span>」
-                        </p>
-                    </div>
-
+                <div className="relative z-20 px-6 pt-20 pb-8 min-h-[600px] flex flex-col justify-end">
                     {/* BOTTOM: Catch copy + Price — left-aligned */}
-                    <div className="text-left">
-                        <h1 className="mb-3 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] tracking-tighter">
-                            <span className="block text-[28px] font-black leading-[1.1] mb-1.5">「あっ、腰が軽い！」</span>
+                    <div className="text-left w-full mt-auto">
+                        {/* Target text */}
+                        <p className="text-white text-[13px] font-bold tracking-widest mb-2 drop-shadow-md animate-flash-text">
+                            ＼ 30代〜50代に多い「慢性的な腰痛」 ／
+                        </p>
+
+                        <h1 className="mb-3 leading-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.6)] tracking-tighter">
+                            <span className="block text-[28px] font-black leading-[1.2] mb-1.5">「あっ、腰が軽い！」</span>
                             <span className="block text-[16px] font-bold leading-[1.4] text-skin-peach">腰の悩みはあっという間に<br />解決します。</span>
                         </h1>
 
-                        <p className="text-[12px] text-white/85 leading-relaxed mb-4 drop-shadow-md max-w-[260px]">
-                            国家資格を持つ専門家が、骨格、筋肉、神経の3面からあなたの腰痛の<span className="text-white font-bold">【本当の原因を】</span>特定します
+                        <p className="text-[12px] text-white/90 leading-relaxed mb-5 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] max-w-[270px]">
+                            国家資格を持つ専門家が、骨格、筋肉、神経の3面からあなたの腰痛の<span className="text-white font-bold bg-skin-rose/40 px-1 rounded">【本当の原因を】</span>特定します
                         </p>
 
                         {/* Price */}
-                        <div className="mb-3">
-                            <span className="inline-block bg-skin-rose text-white text-[9px] font-bold px-2.5 py-1 rounded-full mb-2 tracking-wider">初回限定・特別価格</span>
+                        <div className="mb-5">
+                            <span className="inline-block bg-skin-rose text-white text-[10px] font-bold px-2.5 py-1 rounded-full mb-2 tracking-wider shadow-md">
+                                <i className="fas fa-gift mr-1"></i>初回限定・特別価格
+                            </span>
                             <div className="flex items-baseline gap-2.5">
-                                <div className="flex items-baseline gap-1 opacity-70">
-                                    <span className="text-[9px]">通常</span>
+                                <div className="flex items-baseline gap-1 opacity-80">
+                                    <span className="text-[10px]">通常</span>
                                     <span className="text-sm line-through">6,400円</span>
                                 </div>
-                                <i className="fas fa-caret-right text-skin-peach text-xs"></i>
+                                <i className="fas fa-caret-right text-skin-peach text-sm drop-shadow-md"></i>
                                 <div className="flex items-baseline">
-                                    <span className="font-black text-[38px] tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)]">1,980</span>
-                                    <span className="text-sm font-bold ml-0.5">円</span>
-                                    <span className="text-[9px] text-white/60 ml-0.5">(税込)</span>
+                                    <span className="font-black text-[42px] tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.4)] text-[#FFDF73]">1,980</span>
+                                    <span className="text-sm font-bold ml-0.5 text-[#FFDF73]">円</span>
+                                    <span className="text-[10px] text-white/80 ml-0.5">(税込)</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="text-white/80 text-[11px] leading-snug font-bold tracking-tight">
-                            <p>地域No.1 | 口コミ★5 | 予約優先制</p>
-                            <p>待ち時間なし | 駅徒歩1分 | 提携駐車場有</p>
+                        {/* Badges */}
+                        <div className="flex flex-wrap gap-1.5">
+                            <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white shadow-[0_2px_8px_rgba(0,0,0,0.4)] text-[11px] font-bold px-2 py-1 rounded flex items-center gap-1 border border-yellow-400">
+                                <i className="fas fa-crown text-yellow-200"></i>地域No.1
+                            </span>
+                            <span className="bg-white/20 backdrop-blur-md border border-white/40 text-white shadow-md text-[11px] font-bold px-2 py-1 rounded flex items-center gap-1">
+                                <i className="fas fa-star text-yellow-400"></i>口コミ★5
+                            </span>
+                            <span className="bg-white/20 backdrop-blur-md border border-white/40 text-white shadow-md text-[11px] font-bold px-2 py-1 rounded flex items-center gap-1">
+                                <i className="fas fa-subway text-white"></i>駅徒歩1分
+                            </span>
+                            <span className="bg-white/20 backdrop-blur-md border border-white/40 text-white shadow-md text-[11px] font-bold px-2 py-1 rounded flex items-center gap-1">
+                                <i className="fas fa-car text-white"></i>駐車場有
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -596,7 +611,7 @@
                                     私たちに<br />お任せください。
                                 </h2>
                                 <span className="inline-block bg-skin-rose text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wider shadow-md">
-                                    <i className="fas fa-gift mr-1"></i>4月15日まで・残り20名様
+                                    <i className="fas fa-gift mr-1"></i>4月末まで・10名追加募集！
                                 </span>
                             </div>
 
